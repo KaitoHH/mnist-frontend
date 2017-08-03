@@ -67,3 +67,7 @@ painter.addEventListener('touchleave', paintFinish);
 document.getElementById('export').addEventListener('click', function() {
     console.log(painter.toDataURL());
 });
+
+document.getElementById('clear').addEventListener('click', function() {
+    ctx.fillRect(0, 0, painter.width, painter.height);
+});
