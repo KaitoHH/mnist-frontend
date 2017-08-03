@@ -12,3 +12,8 @@
     font-size: 25px;
     margin: 5px;
 }
+
+#origin-image {
+    border: 1px solid;
+    margin-top: 10px;
+}

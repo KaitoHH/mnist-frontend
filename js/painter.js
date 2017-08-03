@@ -1,4 +1,5 @@
 'use strict';
+var img = document.getElementById('origin-image');
 var painter = document.getElementById('painter');
 var ctx = painter.getContext('2d');
 var painting = false;
@@ -65,9 +66,10 @@ painter.addEventListener('touchend', paintFinish);
 painter.addEventListener('touchleave', paintFinish);
 
 document.getElementById('export').addEventListener('click', function() {
-    console.log(painter.toDataURL());
+    img.src = painter.toDataURL('image/png');
 });
 
 document.getElementById('clear').addEventListener('click', function() {
     ctx.fillRect(0, 0, painter.width, painter.height);
+    img.src = "";
 });
