@@ -64,7 +64,7 @@ function show(gray) {
             type: 'POST',
             url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/show',
             headers: {
-                'Authorization': 'Basic R09EVVNFUjpLYWl0b2hoa2FpdG9oaDExMQ==',
+                'Authorization': 'Basic RVhFQ1VTRVI6RXhlY3VzZXIx',
                 'Content-Type': 'application/json'
             },
             crossDomain: true,
@@ -78,7 +78,7 @@ function show(gray) {
         type: 'POST',
         url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/list',
         headers: {
-            'Authorization': 'Basic R09EVVNFUjpLYWl0b2hoa2FpdG9oaDExMQ==',
+            'Authorization': 'Basic RVhFQ1VTRVI6RXhlY3VzZXIx',
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
