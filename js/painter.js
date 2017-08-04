@@ -8,12 +8,9 @@ var points = [];
 var lastStroke;
 
 ctx.fillStyle = 'white';
-//ctx.strokeStyle = '#7f7f7f';
-//ctx.shadowColor = 'black';
 ctx.fillRect(0, 0, painter.width, painter.height);
 ctx.lineJoin = ctx.lineCap = 'round';
 ctx.lineWidth = 1.1;
-//ctx.shadowBlur = 0.1;
 
 
 function getPos(e) {
@@ -31,7 +28,6 @@ function paintStart(e) {
     lastStroke = ctx.getImageData(0, 0, painter.width, painter.width);
     painting = true;
     var pos = getPos(e);
-    //ctx.moveTo(pos.X, pos.Y);
     points.push(pos);
 }
 
@@ -43,8 +39,6 @@ function paintFinish() {
 function paintOnGoing(e) {
     var pos = getPos(e);
     if (painting) {
-        //ctx.lineTo(pos.X, pos.Y);
-        //ctx.stroke();
         ctx.putImageData(lastStroke, painter.width, painter.height);
         points.push(pos);
         ctx.beginPath();
@@ -52,6 +46,7 @@ function paintOnGoing(e) {
             ctx.lineTo(points[i].X, points[i].Y);
         }
         ctx.stroke();
+        img.src = painter.toDataURL('image/png');
     }
 }
 
@@ -64,10 +59,6 @@ painter.addEventListener('touchstart', paintStart);
 painter.addEventListener('touchmove', paintOnGoing);
 painter.addEventListener('touchend', paintFinish);
 painter.addEventListener('touchleave', paintFinish);
-
-document.getElementById('export').addEventListener('click', function() {
-    img.src = painter.toDataURL('image/png');
-});
 
 document.getElementById('clear').addEventListener('click', function() {
     ctx.fillRect(0, 0, painter.width, painter.height);
