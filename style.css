@@ -9,12 +9,35 @@
 }
 
 .toolBox {
-    font-size: 22px;
+    font-size: 1em;
 }
 
-.toolBox > button {
-    font-size: 25px;
+.button {
+    border: 1px solid transparent;
+    border-radius: 0;
+    background-color: #1779ba;
+    color: white;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    padding: 0.85em 1em;
+    font-size: 0.9em;
     margin: 5px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.button:hover, .button:focus {
+    background-color: #14679e;
+    color: #fefefe;
+}
+
+.button.green {
+    background-color: #3adb76;
+    color: #0a0a0a
+}
+
+.button.green:hover, .button.green:focus {
+    background-color: #22bb5b;
+    color: #0a0a0a;
 }
 
 #origin-image {
