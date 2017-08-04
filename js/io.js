@@ -90,7 +90,7 @@ function show(gray) {
 
 submitBtn.addEventListener('click', handleClick);
 document.addEventListener('keypress', function(e) {
-    if (e.keyCode == 13) {
+    if (e.keyCode == 13 || e.keyCode == 32) {
         handleClick();
     }
 });
