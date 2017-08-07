@@ -2,6 +2,24 @@
 var submitBtn = document.getElementById('toGray');
 var text = document.getElementsByClassName('result')[0];
 var uploadMode = document.getElementById('uploadmode');
+var ajaxHeaders = {
+    'Authorization': 'Basic RVhFQ1VTRVI6RXhlY3VzZXIx',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+};
+
+var showResult = function() {
+    text.innerText = 'nearly done...';
+    $.ajax({
+        type: 'POST',
+        url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/show',
+        headers: ajaxHeaders,
+        crossDomain: true,
+        success: function(data) {
+            text.innerText = "Emmmm...... It's " + data + " !";
+        }
+    })
+}
 
 function handleClick() {
     var gray = getPixel();
@@ -25,11 +43,7 @@ function upload(gray, label) {
     $.ajax({
         type: 'POST',
         url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/upload',
-        headers: {
-            'Authorization': 'Basic RVhFQ1VTRVI6RXhlY3VzZXIx',
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
+        headers: ajaxHeaders,
         crossDomain: true,
         data: JSON.stringify(gray),
         success: function(data) {
@@ -57,31 +71,10 @@ function getPixel() {
 
 function show(gray) {
     text.innerText = 'waiting...';
-
-    var showResult = function() {
-        text.innerText = 'nearly done...';
-        $.ajax({
-            type: 'POST',
-            url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/show',
-            headers: {
-                'Authorization': 'Basic RVhFQ1VTRVI6RXhlY3VzZXIx',
-                'Content-Type': 'application/json'
-            },
-            crossDomain: true,
-            success: function(data) {
-                text.innerText = "Emmmm...... It's " + data + " !";
-            }
-        })
-    }
-
     $.ajax({
         type: 'POST',
         url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/list',
-        headers: {
-            'Authorization': 'Basic RVhFQ1VTRVI6RXhlY3VzZXIx',
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
+        headers: ajaxHeaders,
         crossDomain: true,
         data: JSON.stringify(gray),
         success: showResult
