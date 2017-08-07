@@ -1,6 +1,11 @@
 'use strict';
 var submitBtn = document.getElementById('toGray');
 var text = document.getElementsByClassName('result')[0];
+var ajaxHeaders = {
+    'Authorization': 'Basic RVhFQ1VTRVI6RXhlY3VzZXIx',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+};
 
 function upload() {
     text.innerText = 'waiting...';
@@ -20,10 +25,7 @@ function upload() {
         $.ajax({
             type: 'POST',
             url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/show',
-            headers: {
-                'Authorization': 'Basic RVhFQ1VTRVI6RXhlY3VzZXIx',
-                'Content-Type': 'application/json'
-            },
+            headers: ajaxHeaders,
             crossDomain: true,
             success: function(data) {
                 text.innerText = "Emmmm...... It's " + data + " !";
@@ -34,11 +36,7 @@ function upload() {
     $.ajax({
         type: 'POST',
         url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/list',
-        headers: {
-            'Authorization': 'Basic RVhFQ1VTRVI6RXhlY3VzZXIx',
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
+        headers: ajaxHeaders,
         crossDomain: true,
         data: JSON.stringify(gray),
         success: showResult
