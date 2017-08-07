@@ -7,6 +7,19 @@ var ajaxHeaders = {
     'Accept': 'application/json'
 };
 
+var showResult = function() {
+    text.innerText = 'nearly done...';
+    $.ajax({
+        type: 'POST',
+        url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/show',
+        headers: ajaxHeaders,
+        crossDomain: true,
+        success: function(data) {
+            text.innerText = "Emmmm...... It's " + data + " !";
+        }
+    })
+}
+
 function upload() {
     text.innerText = 'waiting...';
     var rgba = ctx.getImageData(0, 0, painter.width, painter.width).data;
@@ -19,19 +32,6 @@ function upload() {
         gray["p" + i / 4] = 255 - rgba[i];
     }
     // console.log(gray);
-
-    var showResult = function() {
-        text.innerText = 'nearly done...';
-        $.ajax({
-            type: 'POST',
-            url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/show',
-            headers: ajaxHeaders,
-            crossDomain: true,
-            success: function(data) {
-                text.innerText = "Emmmm...... It's " + data + " !";
-            }
-        })
-    }
 
     $.ajax({
         type: 'POST',
