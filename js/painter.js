@@ -64,3 +64,14 @@ document.getElementById('clear').addEventListener('click', function() {
     ctx.fillRect(0, 0, painter.width, painter.height);
     img.src = "";
 });
+
+document.getElementById('pixel').addEventListener('click', function() {
+    var s = prompt("please input grayscale array split by comma:");
+    var array = s.split(',').map(num => parseInt(num));
+    var imageData = ctx.getImageData(0, 0, painter.width, painter.width);
+    for (var i = 0; i < array.length; i++) {
+        imageData.data[i * 4] = imageData.data[i * 4 + 1] = imageData.data[i * 4 + 2] = 255 - array[i];
+    }
+    ctx.putImageData(imageData, 0, 0);
+    img.src = painter.toDataURL('image/png');
+});
