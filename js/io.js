@@ -26,7 +26,6 @@ function handleClick() {
     if (uploadMode.checked) {
         var label = prompt("What is it?");
         var num1 = parseInt(label);
-        console.log(num1);
         if (num1 >= 0 && num1 <= 9) {
             upload(gray, num1);
         } else {
@@ -50,6 +49,9 @@ function upload(gray, label) {
             console.log(data);
             text.innerText = 'upload success!';
             document.getElementById('clear').click();
+        },
+        error: function(response) {
+            text.innerText = response.responseJSON.error.message.value;
         }
     });
 }
