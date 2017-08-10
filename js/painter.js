@@ -37,6 +37,7 @@ function paintFinish() {
 }
 
 function paintOnGoing(e) {
+    e.preventDefault();
     var pos = getPos(e);
     if (painting) {
         ctx.putImageData(lastStroke, painter.width, painter.height);
