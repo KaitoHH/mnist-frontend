@@ -4,6 +4,20 @@
     cursor: crosshair;
 }
 
+#server-status {
+    min-width: 40px;
+    display: inline-block;
+    font-weight: bolder;
+}
+
+.red-text {
+    color: #ff0000;
+}
+
+.green-text {
+    color: #00ff00;
+}
+
 .result {
     font-size: 50px;
 }

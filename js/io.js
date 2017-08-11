@@ -2,6 +2,7 @@
 var submitBtn = document.getElementById('toGray');
 var text = document.getElementsByClassName('result')[0];
 var uploadMode = document.getElementById('uploadmode');
+var statusLbl = document.getElementById('server-status');
 var ajaxHeaders = {
     'Authorization': 'Basic RVhFQ1VTRVI6RXhlY3VzZXIx',
     'Content-Type': 'application/json',
@@ -87,5 +88,20 @@ submitBtn.addEventListener('click', handleClick);
 document.addEventListener('keypress', function(e) {
     if (e.keyCode == 13 || e.keyCode == 32) {
         handleClick();
+    }
+});
+
+$.ajax({
+    url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/',
+    headers: ajaxHeaders,
+    crossDomain: true,
+    success: function(data) {
+        statusLbl.innerText = 'ok';
+        statusLbl.className = 'green-text';
+    },
+	error: function(data) {
+        console.log('error');
+        statusLbl.innerText = 'no';
+        statusLbl.className = 'red-text';
     }
 });
