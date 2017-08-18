@@ -41,7 +41,7 @@ function upload(gray, label) {
     text.innerText = 'uploading...';
     gray["label"] = label;
     $.ajax({
-        type: 'POST',
+        type: 'PUT',
         url: 'https://dbi342070trial.hanatrial.ondemand.com/mnist/api/upload',
         headers: ajaxHeaders,
         crossDomain: true,
